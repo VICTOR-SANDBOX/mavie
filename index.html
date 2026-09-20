@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Um mapa celeste poético para Mavie." />
+    <title>Mavie — mapa do céu</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="noise" aria-hidden="true"></div>
+    <canvas id="stars" aria-hidden="true"></canvas>
+
+    <header class="site-header">
+      <a class="wordmark" href="#inicio" aria-label="Voltar ao início">mavie<span>✦</span></a>
+      <button class="sound-toggle" id="soundToggle" type="button" aria-pressed="false">
+        <span class="sound-icon">◌</span> ativar atmosfera
+      </button>
+    </header>
+
+    <main id="inicio">
+      <section class="hero section">
+        <p class="eyebrow reveal">um retrato celeste, feito para você</p>
+        <h1 class="reveal"><em>Mavie,</em><br />meu menino<br />das estrelas.</h1>
+        <p class="hero-copy reveal">Meu lugar favorito no universo, o nome que meu coração chamou. Para o mundo, Pedro. Para mim, Mavie.</p>
+        <a class="scroll-cue reveal" href="#mapa"><span></span> ver o que as estrelas contam</a>
+      </section>
+
+      <section class="birth-card section" aria-label="Dados do nascimento">
+        <div class="birth-intro reveal">
+          <p class="eyebrow">a primeira coordenada</p>
+          <h2>Um céu que abriu<br /><em>às quatro da tarde.</em></h2>
+        </div>
+        <dl class="birth-data reveal">
+          <div><dt>quando</dt><dd>12.09.2002 · 16:00</dd></div>
+          <div><dt>onde</dt><dd>Cuiabá, Mato Grosso, Brasil</dd></div>
+          <div><dt>sol</dt><dd>Virgem</dd></div>
+          <div><dt>ascendente</dt><dd>Aquário</dd></div>
+        </dl>
+      </section>
+
+      <section class="chart-section section" id="mapa">
+        <div class="section-heading reveal">
+          <p class="eyebrow">toque nas órbitas</p>
+          <h2>Seu pequeno<br /><em>universo.</em></h2>
+          <p>Não é uma sentença sobre quem você é. É uma forma bonita de observar as suas muitas camadas.</p>
+        </div>
+        <div class="orbit-stage reveal" id="orbitStage">
+          <div class="orbit orbit-outer"></div>
+          <div class="orbit orbit-middle"></div>
+          <div class="orbit orbit-inner"></div>
+          <div class="star-core" aria-hidden="true"><span>✦</span></div>
+          <button class="planet sun" data-planet="sun" style="--x:70%; --y:28%;" aria-label="Sol em Virgem"><i>☉</i><b>Sol</b></button>
+          <button class="planet moon" data-planet="moon" style="--x:76%; --y:70%;" aria-label="Lua em Sagitário"><i>☽</i><b>Lua</b></button>
+          <button class="planet mercury" data-planet="mercury" style="--x:29%; --y:76%;" aria-label="Mercúrio em Libra"><i>☿</i><b>Mercúrio</b></button>
+          <button class="planet venus" data-planet="venus" style="--x:24%; --y:35%;" aria-label="Vênus em Escorpião"><i>♀</i><b>Vênus</b></button>
+          <button class="planet mars" data-planet="mars" style="--x:65%; --y:61%;" aria-label="Marte em Virgem"><i>♂</i><b>Marte</b></button>
+          <button class="planet jupiter" data-planet="jupiter" style="--x:52%; --y:10%;" aria-label="Júpiter em Leão"><i>♃</i><b>Júpiter</b></button>
+          <button class="planet saturn" data-planet="saturn" style="--x:14%; --y:63%;" aria-label="Saturno em Gêmeos"><i>♄</i><b>Saturno</b></button>
+          <button class="planet uranus" data-planet="uranus" style="--x:13%; --y:18%;" aria-label="Urano em Aquário retrógrado"><i>♅</i><b>Urano</b></button>
+          <button class="planet neptune" data-planet="neptune" style="--x:84%; --y:25%;" aria-label="Netuno em Aquário retrógrado"><i>♆</i><b>Netuno</b></button>
+          <button class="planet pluto" data-planet="pluto" style="--x:88%; --y:52%;" aria-label="Plutão em Sagitário"><i>♇</i><b>Plutão</b></button>
+          <button class="planet node" data-planet="node" style="--x:38%; --y:13%;" aria-label="Nodo Norte em Gêmeos"><i>☊</i><b>Nodo</b></button>
+          <button class="planet chiron" data-planet="chiron" style="--x:87%; --y:85%;" aria-label="Quíron em Capricórnio"><i>⚷</i><b>Quíron</b></button>
+          <button class="planet lilith" data-planet="lilith" style="--x:20%; --y:84%;" aria-label="Lilith em Áries"><i>⚸</i><b>Lilith</b></button>
+          <div class="constellation c-one" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+          <div class="constellation c-two" aria-hidden="true"><span></span><span></span><span></span></div>
+        </div>
+        <article class="planet-reading reveal" id="planetReading" aria-live="polite">
+          <span class="reading-symbol">☉</span>
+          <div><p class="eyebrow" id="readingKicker">sol em virgem · 19°</p><h3 id="readingTitle">A arte de reparar no que importa.</h3><p id="readingText">Seu centro tem olhos atentos. Existe cuidado na sua forma de amar, criar e deixar o mundo um pouco melhor do que encontrou.</p></div>
+        </article>
+        <div class="planet-list reveal" aria-label="Lista de pontos do mapa">
+          <p class="eyebrow">todos os pontos do mapa · toque para explorar</p>
+          <div class="planet-list-grid">
+            <button data-planet="sun"><span>☉</span> Sol <small>Virgem · casa 7</small></button><button data-planet="moon"><span>☽</span> Lua <small>Sagitário · casa 10</small></button><button data-planet="mercury"><span>☿</span> Mercúrio <small>Libra · casa 8</small></button><button data-planet="venus"><span>♀</span> Vênus <small>Escorpião · casa 9</small></button><button data-planet="mars"><span>♂</span> Marte <small>Virgem · casa 7</small></button><button data-planet="jupiter"><span>♃</span> Júpiter <small>Leão · casa 6</small></button><button data-planet="saturn"><span>♄</span> Saturno <small>Gêmeos · casa 5</small></button><button data-planet="uranus"><span>♅</span> Urano retrógrado <small>Aquário · casa 12</small></button><button data-planet="neptune"><span>♆</span> Netuno retrógrado <small>Aquário · casa 12</small></button><button data-planet="pluto"><span>♇</span> Plutão <small>Sagitário · casa 10</small></button><button data-planet="node"><span>☊</span> Nodo Norte <small>Gêmeos · casa 4</small></button><button data-planet="chiron"><span>⚷</span> Quíron <small>Capricórnio · casa 11</small></button><button data-planet="lilith"><span>⚸</span> Lilith <small>Áries · casa 2</small></button>
+          </div>
+        </div>
+      </section>
+
+      <section class="details section">
+        <div class="section-heading reveal"><p class="eyebrow">a arquitetura do céu</p><h2>Além do<br /><em>signo solar.</em></h2><p>O mapa completo também guarda casas, eixos e um recorte de trânsitos. Aqui está a legenda para continuar a leitura com calma.</p></div>
+        <div class="details-grid reveal"><article><p class="eyebrow">eixos</p><h3>Ascendente <em>Aquário 26°53'</em></h3><h3>Meio do Céu <em>Escorpião 27°48'</em></h3><p>Como você chega ao mundo e a direção que a sua vida pública procura.</p></article><article><p class="eyebrow">trânsitos · 02.09.2026</p><h3>Saturno <em>Áries 13°37'</em></h3><h3>Urano <em>Gêmeos 5°39'</em></h3><p>Movimentos do céu daquele recorte de tempo, apresentados como uma camada simbólica e temporal.</p></article></div>
+      </section>
+
+      <section class="three-signs section">
+        <p class="eyebrow reveal">os três portais principais</p>
+        <div class="sign-grid">
+          <article class="sign-card reveal"><span class="glyph">♍</span><p>sol em virgem</p><h3>O que aperfeiçoa por carinho.</h3><small>Terra · mutável</small></article>
+          <article class="sign-card reveal"><span class="glyph">♐</span><p>lua em sagitário</p><h3>O coração que procura horizonte.</h3><small>Fogo · mutável</small></article>
+          <article class="sign-card reveal"><span class="glyph">♒</span><p>ascendente em aquário</p><h3>O diferente que chega primeiro.</h3><small>Ar · fixo</small></article>
+        </div>
+      </section>
+
+      <section class="letter section">
+        <div class="letter-glow" aria-hidden="true"></div>
+        <p class="eyebrow reveal">uma nota para você</p>
+        <blockquote class="reveal">“Que você nunca esqueça: até as constelações só fazem sentido porque alguém decidiu olhar para os pontos de luz e imaginar uma história.”</blockquote>
+        <p class="letter-end reveal">E eu sempre vou querer imaginar a sua.</p>
+        <p class="signature reveal">com amor,<br /><em>o amor dele</em> <span>✦</span></p>
+      </section>
+    </main>
+
+    <footer>feito em setembro de 2026 · uma leitura simbólica e afetiva</footer>
+    <script src="script.js"></script>
+  </body>
+</html>
